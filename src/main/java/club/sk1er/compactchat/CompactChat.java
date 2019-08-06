@@ -3,6 +3,7 @@ package club.sk1er.compactchat;
 import club.sk1er.compactchat.utils.Sk1erMod;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiNewChat;
+import net.minecraft.util.text.ChatType;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.client.event.ClientChatReceivedEvent;
 import net.minecraftforge.common.MinecraftForge;
@@ -28,7 +29,7 @@ public class CompactChat {
 
     @SubscribeEvent
     public void chat(ClientChatReceivedEvent event) {
-        if (!event.isCanceled() && event.getType() == 0) {
+        if (!event.isCanceled() && event.getType().equals(ChatType.CHAT)) {
             GuiNewChat guiNewChat = Minecraft.getMinecraft().ingameGUI.getChatGUI();
             if (lastMessage.equals(event.getMessage().getUnformattedText())) {
                 guiNewChat.deleteChatLine(line);

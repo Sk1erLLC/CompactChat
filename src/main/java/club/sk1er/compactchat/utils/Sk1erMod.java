@@ -58,7 +58,7 @@ public class Sk1erMod {
         instance = this;
         prefix = TextFormatting.RED + "[" + TextFormatting.AQUA + this.name + TextFormatting.RED + "]" + TextFormatting.YELLOW + ": ";
         MinecraftForge.EVENT_BUS.register(this);
-        File mcDataDir = Minecraft.getMinecraft().mcDataDir;
+        File mcDataDir = Minecraft.getMinecraft().gameDir;
 
         dir = new File(mcDataDir, "sk1ermod");
         if (!dir.exists())
