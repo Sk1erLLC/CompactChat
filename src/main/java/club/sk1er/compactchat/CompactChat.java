@@ -12,7 +12,7 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 import static club.sk1er.compactchat.CompactChat.*;
 
-@Mod(modid = MODID, name = NAME, version = VERSION)
+@Mod(modid = MODID, name = NAME, version = VERSION, acceptedMinecraftVersions = "[1.10.2], [1.11.2]")
 public class CompactChat {
 
     static final String MODID = "compactchat", NAME = "Compact Chat", VERSION = "1.0";
