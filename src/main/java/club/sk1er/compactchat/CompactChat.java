@@ -3,7 +3,7 @@ package club.sk1er.compactchat;
 import club.sk1er.compactchat.utils.Sk1erMod;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiNewChat;
-import net.minecraft.util.EnumChatFormatting;
+import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.client.event.ClientChatReceivedEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.Mod;
@@ -28,21 +28,21 @@ public class CompactChat {
 
     @SubscribeEvent
     public void chat(ClientChatReceivedEvent event) {
-        if (!event.isCanceled() && event.type == 0) {
+        if (!event.isCanceled() && event.getType() == 0) {
             GuiNewChat guiNewChat = Minecraft.getMinecraft().ingameGUI.getChatGUI();
-            if (lastMessage.equals(event.message.getUnformattedText())) {
+            if (lastMessage.equals(event.getMessage().getUnformattedText())) {
                 guiNewChat.deleteChatLine(line);
                 amount++;
-                lastMessage = event.message.getUnformattedText();
-                event.message.appendText(EnumChatFormatting.GRAY + " (" + amount + ")");
+                lastMessage = event.getMessage().getUnformattedText();
+                event.getMessage().appendText(TextFormatting.GRAY + " (" + amount + ")");
             } else {
                 amount = 1;
-                lastMessage = event.message.getUnformattedText();
+                lastMessage = event.getMessage().getUnformattedText();
             }
 
             line++;
             if (!event.isCanceled()) {
-                guiNewChat.printChatMessageWithOptionalDeletion(event.message, line);
+                guiNewChat.printChatMessageWithOptionalDeletion(event.getMessage(), line);
             }
 
             if (line > 256) {

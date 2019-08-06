@@ -3,8 +3,8 @@ package club.sk1er.compactchat.utils;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import net.minecraft.client.Minecraft;
-import net.minecraft.util.EnumChatFormatting;
-import net.minecraft.util.IChatComponent;
+import net.minecraft.util.text.ITextComponent;
+import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.common.ForgeHooks;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.client.FMLClientHandler;
@@ -34,7 +34,7 @@ public class Sk1erMod {
      */
     private static Sk1erMod instance;
     private boolean first = false;
-    private List<IChatComponent> updateMessage = new ArrayList<>();
+    private List<ITextComponent> updateMessage = new ArrayList<>();
     private String modid;
     private String version;
     private boolean enabled = true;
@@ -45,7 +45,7 @@ public class Sk1erMod {
     private JsonHolder en;
     private boolean hypixel;
     private GenKeyCallback callback;
-    private ConcurrentLinkedQueue<IChatComponent> messages = new ConcurrentLinkedQueue<>();
+    private ConcurrentLinkedQueue<ITextComponent> messages = new ConcurrentLinkedQueue<>();
     private boolean bookUser = false;
     private boolean firstFileStatus = false;
     private File dir;
@@ -56,7 +56,7 @@ public class Sk1erMod {
         this.version = version;
         this.name = name;
         instance = this;
-        prefix = EnumChatFormatting.RED + "[" + EnumChatFormatting.AQUA + this.name + EnumChatFormatting.RED + "]" + EnumChatFormatting.YELLOW + ": ";
+        prefix = TextFormatting.RED + "[" + TextFormatting.AQUA + this.name + TextFormatting.RED + "]" + TextFormatting.YELLOW + ": ";
         MinecraftForge.EVENT_BUS.register(this);
         File mcDataDir = Minecraft.getMinecraft().mcDataDir;
 
@@ -90,7 +90,7 @@ public class Sk1erMod {
         return true;
     }
 
-    public List<IChatComponent> getUpdateMessage() {
+    public List<ITextComponent> getUpdateMessage() {
         return updateMessage;
     }
 
@@ -203,7 +203,7 @@ public class Sk1erMod {
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
-                for (IChatComponent s : updateMessage) {
+                for (ITextComponent s : updateMessage) {
                     Minecraft.getMinecraft().thePlayer.addChatComponentMessage(s);
                 }
             });
