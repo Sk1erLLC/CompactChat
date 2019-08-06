@@ -106,9 +106,9 @@ public class Sk1erMod {
     public void tick(TickEvent.RenderTickEvent event) {
 
 
-        if (Minecraft.getMinecraft().thePlayer == null) return;
+        if (Minecraft.getMinecraft().player == null) return;
         while (!messages.isEmpty()) {
-            Minecraft.getMinecraft().thePlayer.addChatComponentMessage(messages.poll());
+            Minecraft.getMinecraft().player.sendMessage(messages.poll());
         }
         if (book) {
             book = false;
@@ -182,7 +182,7 @@ public class Sk1erMod {
                 FMLClientHandler.instance().getClient().getCurrentServerData().serverName.equalsIgnoreCase("HYPIXEL"));
         if (hasUpdate() || first) {
             Multithreading.runAsync(() -> {
-                while (Minecraft.getMinecraft().thePlayer == null) {
+                while (Minecraft.getMinecraft().player == null) {
                     try {
                         Thread.sleep(100L);
                     } catch (InterruptedException e) {
@@ -204,7 +204,7 @@ public class Sk1erMod {
                     e.printStackTrace();
                 }
                 for (ITextComponent s : updateMessage) {
-                    Minecraft.getMinecraft().thePlayer.addChatComponentMessage(s);
+                    Minecraft.getMinecraft().player.sendMessage(s);
                 }
             });
         }
