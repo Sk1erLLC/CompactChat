@@ -8,6 +8,7 @@ import net.minecraftforge.client.event.ClientChatReceivedEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
+import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 import static club.sk1er.compactchat.CompactChat.*;
@@ -15,7 +16,7 @@ import static club.sk1er.compactchat.CompactChat.*;
 @Mod(modid = MODID, name = NAME, version = VERSION, acceptedMinecraftVersions = "[1.10.2], [1.11.2]")
 public class CompactChat {
 
-    static final String MODID = "compactchat", NAME = "Compact Chat", VERSION = "1.0";
+    static final String MODID = "compactchat", NAME = "Compact Chat", VERSION = "1.1";
 
     private String lastMessage = "";
     private int line, amount;
@@ -26,7 +27,7 @@ public class CompactChat {
         new Sk1erMod(MODID, VERSION, NAME).checkStatus();
     }
 
-    @SubscribeEvent
+    @SubscribeEvent(priority = EventPriority.LOW)
     public void chat(ClientChatReceivedEvent event) {
         if (!event.isCanceled() && event.getType() == 0) {
             GuiNewChat guiNewChat = Minecraft.getMinecraft().ingameGUI.getChatGUI();
