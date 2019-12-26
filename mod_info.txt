@@ -1,0 +1,3 @@
+<br>
+<p>Compact Chat allows you to have a cleaner chat by stacking duplicates into a single message</p>
+<br>
