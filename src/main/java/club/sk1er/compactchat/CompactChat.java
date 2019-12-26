@@ -16,7 +16,7 @@ import static club.sk1er.compactchat.CompactChat.*;
 @Mod(modid = MODID, name = NAME, version = VERSION, acceptedMinecraftVersions = "[1.10.2], [1.11.2]")
 public class CompactChat {
 
-    static final String MODID = "compactchat", NAME = "Compact Chat", VERSION = "1.1";
+    static final String MODID = "compactchat", NAME = "Compact Chat", VERSION = "1.2";
 
     private String lastMessage = "";
     private int line, amount;
