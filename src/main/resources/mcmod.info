@@ -1,0 +1,18 @@
+[
+  {
+    "modid": "compactchat",
+    "name": "Compact Chat",
+    "description": "Clean up chat through removing duplicates.",
+    "version": "${version}",
+    "mcversion": "${mcversion}",
+    "url": "",
+    "updateUrl": "",
+    "authorList": [
+      "Sk1er LLC"
+    ],
+    "credits": "",
+    "logoFile": "",
+    "screenshots": [],
+    "dependencies": []
+  }
+]
