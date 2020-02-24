@@ -1,6 +1,6 @@
 package club.sk1er.compactchat;
 
-import club.sk1er.compactchat.utils.Sk1erMod;
+import club.sk1er.modcore.ModCoreInstaller;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiNewChat;
 import net.minecraft.util.EnumChatFormatting;
@@ -11,20 +11,22 @@ import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
-import static club.sk1er.compactchat.CompactChat.*;
+import static club.sk1er.compactchat.CompactChat.MODID;
+import static club.sk1er.compactchat.CompactChat.NAME;
+import static club.sk1er.compactchat.CompactChat.VERSION;
 
 @Mod(modid = MODID, name = NAME, version = VERSION)
 public class CompactChat {
 
-    static final String MODID = "compactchat", NAME = "Compact Chat", VERSION = "1.2";
+    static final String MODID = "compactchat", NAME = "Compact Chat", VERSION = "1.3";
 
     private String lastMessage = "";
     private int line, amount;
 
     @Mod.EventHandler
     public void init(FMLInitializationEvent event) {
+        ModCoreInstaller.initializeModCore(Minecraft.getMinecraft().mcDataDir);
         MinecraftForge.EVENT_BUS.register(this);
-        new Sk1erMod(MODID, VERSION, NAME).checkStatus();
     }
 
     @SubscribeEvent(priority = EventPriority.LOW)
